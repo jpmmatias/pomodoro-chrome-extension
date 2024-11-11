@@ -56,5 +56,7 @@ is named after the tomato-shaped kitchen timers that start ticking with a twist 
 ## Incoming features 👷
 - Pomodoro history
 - Sync with web app
+- Multiple languages support
+- Shared timer
 
 Get started today and see how small intervals can lead to big productivity gains!
