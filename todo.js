@@ -45,7 +45,9 @@ const createTask = (name, id, completed) => {
   task.innerHTML = `
         <span class="task-name">${name}</span>
         <input type="checkbox" ${completed ? "checked" : ""}>
-        <button class="remove-task" id="button-${id}">Remove</button>
+        <button class="remove-task" id="button-${id}">
+            <i class="fas fa-trash"></i>
+        </button>
     `;
 
   task.querySelector('input[type="checkbox"]').addEventListener("click", () => {
@@ -81,16 +83,35 @@ addTaskButton.addEventListener("click", () => {
   taskInput.classList.add("task-input");
   taskInput.innerHTML = `
         <input type="text" placeholder="Task Name">
-        <input type="button" value="X">
+        <button class="add-button"><i class="fas fa-check"></i></button>
+        <button class="cancel-button"><i class="fas fa-times"></i></button>
     `;
+  
   taskInput
     .querySelector('input[type="text"]')
     .addEventListener("keydown", onPressEnter);
+  
   taskInput
-    .querySelector('input[type="button"]')
+    .querySelector('.cancel-button')
     .addEventListener("click", () => {
       taskInput.remove();
     });
 
+  taskInput
+    .querySelector('.add-button')
+    .addEventListener("click", () => {
+      const input = taskInput.querySelector('input[type="text"]');
+      if (input.value.trim()) {
+        const name = input.value;
+        const taskId = tasks.length > 0 ? Math.max(...tasks.map((task) => task.id)) + 1 : 1;
+        tasks.push({ id: taskId, completed: false, name });
+        tasksCreatedContainer.appendChild(createTask(name, taskId, false));
+        chrome.storage.local.set({ tasks });
+        taskInput.remove();
+      }
+    });
+
   taskContainer.appendChild(taskInput);
+  taskInput.querySelector('input[type="text"]').focus();
 });
+

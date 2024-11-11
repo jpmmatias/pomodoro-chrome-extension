@@ -3,19 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Pomodoro Timer Options</title>
   </head>
   <body>
-    <h1>Pomodoro Timer Options</h1>
+    <div class="main-container">
+      <h1 class="title">Pomodoro Timer Options</h1>
 
-    <div class="options-container">
-      <label class="label" for="focusTime">Focus Time (minutes)</label>
-      <input class="input" type="number" min="1" max="60" id="focusTime" />
-      
-      <label class="label" for="breakTime">Break Time (minutes)</label>
-      <input class="input" type="number" min="1" max="60" id="breakTime" />
-      
-      <button id="save">Save</button>
+      <div class="options-container">
+        <label class="label" for="focusTime">Focus Time (minutes)</label>
+        <input class="input" type="number" min="1" max="60" id="focusTime" />
+
+        <label class="label" for="breakTime">Break Time (minutes)</label>
+        <input class="input" type="number" min="1" max="60" id="breakTime" />
+
+        <button id="save">Save</button>
+      </div>
     </div>
 
     <script src="options.js"></script>
