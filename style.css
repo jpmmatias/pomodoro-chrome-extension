@@ -21,11 +21,16 @@ body {
 .buttons{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     margin-bottom: 32px;
     gap: 10px;
+    flex-wrap: wrap;
 }
+.buttons button {
+    min-width: 100px;
+}
+
 .task-input{
     display: flex;
     flex-direction: row;
@@ -137,4 +142,12 @@ margin-top: 16px;
 
 #save:hover{
     background-color: #0056b3;
+}
+
+#break {
+    background-color: #28a745;
+}
+
+#break:hover {
+    background-color: #218838;
 }

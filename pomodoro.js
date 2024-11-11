@@ -1,34 +1,41 @@
 let START_FOCUS_TIME = "25:00";
+let START_BREAK_TIME = "05:00";
+let isBreakTime = false;
+
 const startButton = document.getElementById("start");
 const stopButton = document.getElementById("stop");
 const resetButton = document.getElementById("reset");
 const timer = document.getElementById("timer");
+const breakButton = document.getElementById("break");
 
-chrome.storage.local.get(["focusTime"], (result) => {
+chrome.storage.local.get(["focusTime", "isBreakTime"], (result) => {
   START_FOCUS_TIME = `${result.focusTime}:00` || "25:00";
+  isBreakTime = result.isBreakTime || false;
+  startButton.textContent = "Start Focus";
+  breakButton.textContent = "Start Break";
 });
 
 const toggleIsRunning = (isRunning) => {
   chrome.storage.local.set({ isRunning });
 };
 
-startButton.addEventListener("click", () => {
+const startFocus = () => {
+  isBreakTime = false;
+  chrome.storage.local.set({ isBreakTime, timer: 0 });
+  resetTimer();
   toggleIsRunning(true);
-});
-
-stopButton.addEventListener("click", () => {
-  toggleIsRunning(false);
-});
-
-const resetTimer = () => {
-  chrome.storage.local.set({ timer: 0, isRunning: false });
-  timer.innerText = START_FOCUS_TIME;
 };
 
-resetButton.addEventListener("click", resetTimer);
+const startBreak = () => {
+  isBreakTime = true;
+  chrome.storage.local.set({ isBreakTime, timer: 0 });
+  resetTimer();
+  toggleIsRunning(true);
+};
 
 const formatTime = (time) => {
-  const [startMinutes, startSeconds] = START_FOCUS_TIME.split(":").map(Number);
+  const currentTime = isBreakTime ? START_BREAK_TIME : START_FOCUS_TIME;
+  const [startMinutes, startSeconds] = currentTime.split(":").map(Number);
   const totalStartSeconds = startMinutes * 60 + startSeconds;
   const remainingSeconds = totalStartSeconds - time;
 
@@ -43,6 +50,20 @@ const formatTime = (time) => {
     .toString()
     .padStart(2, "0")}`;
 };
+
+const resetTimer = () => {
+  chrome.storage.local.set({ timer: 0, isRunning: false });
+  timer.innerText = isBreakTime ? START_BREAK_TIME : START_FOCUS_TIME;
+};
+
+startButton.addEventListener("click", startFocus);
+breakButton.addEventListener("click", startBreak);
+
+stopButton.addEventListener("click", () => {
+  toggleIsRunning(false);
+});
+
+resetButton.addEventListener("click", resetTimer);
 
 const updateBadge = (time) => {
   chrome.action.setBadgeText({
