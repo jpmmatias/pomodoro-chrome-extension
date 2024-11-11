@@ -8,8 +8,9 @@ const resetButton = document.getElementById("reset");
 const timer = document.getElementById("timer");
 const breakButton = document.getElementById("break");
 
-chrome.storage.local.get(["focusTime", "isBreakTime"], (result) => {
-  START_FOCUS_TIME = `${result.focusTime}:00` || "25:00";
+chrome.storage.local.get(["focusTime", "breakTime", "isBreakTime"], (result) => {
+  START_FOCUS_TIME = `${result.focusTime || 25}:00`;
+  START_BREAK_TIME = `${result.breakTime || 5}:00`;
   isBreakTime = result.isBreakTime || false;
   startButton.textContent = "Start Focus";
   breakButton.textContent = "Start Break";

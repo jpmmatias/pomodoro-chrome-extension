@@ -1,18 +1,31 @@
 const focusTimeInput = document.getElementById("focusTime");
+const breakTimeInput = document.getElementById("breakTime");
 const saveButton = document.getElementById("save");
 const timer = document.getElementById("timer");
 
+// Load saved values
+chrome.storage.local.get(["focusTime", "breakTime"], (result) => {
+  focusTimeInput.value = result.focusTime || 25;
+  breakTimeInput.value = result.breakTime || 5;
+});
+
 saveButton.addEventListener("click", () => {
   const focusTime = focusTimeInput.value;
-  if (!focusTime) {
+  const breakTime = breakTimeInput.value;
+
+  if (!focusTime || !breakTime) {
     return;
   }
 
-  if (focusTime < 1 || focusTime > 60) {
+  if (focusTime < 1 || focusTime > 60 || breakTime < 1 || breakTime > 60) {
     return;
   }
 
-  chrome.storage.local.set({ focusTime , timer: 0, isRunning: false});
-  timer.innerText = `${focusTime}:00`;
+  chrome.storage.local.set({
+    focusTime,
+    breakTime,
+    timer: 0,
+    isRunning: false
+  });
 });
     
