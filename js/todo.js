@@ -7,6 +7,23 @@ const tasksCreatedContainer = document.querySelector(".tasks");
  */
 let tasks = [];
 
+const updateProgress = () => {
+  const total = tasks.length;
+  const completed = tasks.filter(task => task.completed).length;
+  const percentage = total === 0 ? 0 : Math.round((completed / total) * 100);
+  
+  const circle = document.querySelector('.progress-ring-circle');
+  const text = document.querySelector('.progress-text');
+  
+  const radius = circle.r.baseVal.value;
+  const circumference = radius * 2 * Math.PI;
+  
+  circle.style.strokeDasharray = `${circumference} ${circumference}`;
+  circle.style.strokeDashoffset = circumference - (percentage / 100) * circumference;
+  
+  text.textContent = `${percentage}%`;
+};
+
 chrome.storage.local.get("tasks", (result) => {
   tasks = result?.tasks || [];
   if (tasks.length > 0) {
@@ -17,6 +34,7 @@ chrome.storage.local.get("tasks", (result) => {
   } else {
     tasksCreatedContainer.innerHTML = "<p>No tasks</p>";
   }
+  updateProgress();
 });
 
 const checkTaskToggle = (id) => {
@@ -29,6 +47,7 @@ const checkTaskToggle = (id) => {
   );
 
   chrome.storage.local.set({ tasks });
+  updateProgress();
 };
 
 const removeTask = (id) => {
@@ -36,6 +55,7 @@ const removeTask = (id) => {
   chrome.storage.local.set({ tasks });
   const task = document.getElementById(id);
   if (task) task.remove();
+  updateProgress();
 };
 
 const createTask = (name, id, completed) => {
@@ -108,6 +128,7 @@ addTaskButton.addEventListener("click", () => {
         tasksCreatedContainer.appendChild(createTask(name, taskId, false));
         chrome.storage.local.set({ tasks });
         taskInput.remove();
+        updateProgress();
       }
     });
 

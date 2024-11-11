@@ -1,7 +1,6 @@
 const focusTimeInput = document.getElementById("focusTime");
 const breakTimeInput = document.getElementById("breakTime");
 const saveButton = document.getElementById("save");
-const timer = document.getElementById("timer");
 
 chrome.storage.local.get(["focusTime", "breakTime"], (result) => {
   focusTimeInput.value = result.focusTime || 25;

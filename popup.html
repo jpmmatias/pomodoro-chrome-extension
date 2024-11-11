@@ -18,7 +18,16 @@
         <button id="stop">Stop</button>
         <button id="reset">Reset</button>
     </div>
-    <h3>Tasks</h3>
+    <h2 class="subtitle">Tasks</h2>
+    <div class="progress-container">
+      <div class="progress-ring">
+        <svg class="progress" width="80" height="80">
+          <circle class="progress-ring-circle-bg" cx="40" cy="40" r="34"/>
+          <circle class="progress-ring-circle" cx="40" cy="40" r="34"/>
+        </svg>
+        <div class="progress-text">0%</div>
+      </div>
+    </div>
     <div class="tasks">
     </div>
     <div class="task-container">
@@ -28,6 +37,5 @@
    
    <script src="./js/pomodoro.js"></script>
    <script src="./js/todo.js"></script>
-   <script src="./js/options.js"></script>
 </body>
 </html>
