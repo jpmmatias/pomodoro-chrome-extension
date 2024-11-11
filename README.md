@@ -2,8 +2,9 @@
 
 Take control of your time with the Pomodoro Focus Timer! 
 
+![image](https://github.com/user-attachments/assets/d2907b84-9ba2-4189-a3fc-d79015d87b89)
 
-![image](https://github.com/user-attachments/assets/4b7a7ad6-4e27-46d1-bda6-a08664fc796c)
+
 
 
 This minimalist Chrome extension helps you stay productive by breaking your work into focused intervals with short breaks in between. 
@@ -35,9 +36,24 @@ Ideal for students, developers, writers, and anyone looking to improve focus and
 The Pomodoro Technique, designed by developer and entrepreneur Francesco Cirillo in the 1980s, 
 is named after the tomato-shaped kitchen timers that start ticking with a twist of the top. (Pomodoro is the Italian word for tomato)
 
+## FAQ 🤔
+
+#### How to change timers? 
+
+- Left-click on the Pomodoro icon in the Chrome toolbar.
+- In the dropdown menu, select "Options".
+   
+![image](https://github.com/user-attachments/assets/ea0e8711-db17-4d02-ac06-00a155e3c691)
+
+
+![image](https://github.com/user-attachments/assets/0cde8bb8-bbc4-4b9a-9f37-26577615a755)
+
+
+</ul>
+
+
 
 ## Incoming features 👷
-- Customizable Intervals: Set work and break durations to fit your personal rhythm.
 - Notification Alerts: Receive alerts when it’s time to take a break or get back to work.
 
 Get started today and see how small intervals can lead to big productivity gains!
