@@ -2,8 +2,8 @@
 
 Take control of your time with the Pomodoro Focus Timer! 
 
+![Uploading image.png…]()
 
-![image](https://github.com/user-attachments/assets/4b7a7ad6-4e27-46d1-bda6-a08664fc796c)
 
 
 This minimalist Chrome extension helps you stay productive by breaking your work into focused intervals with short breaks in between. 
