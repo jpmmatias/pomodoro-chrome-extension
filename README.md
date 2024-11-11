@@ -2,7 +2,8 @@
 
 Take control of your time with the Pomodoro Focus Timer! 
 
-![Uploading image.png…]()
+![image](https://github.com/user-attachments/assets/d2907b84-9ba2-4189-a3fc-d79015d87b89)
+
 
 
 
