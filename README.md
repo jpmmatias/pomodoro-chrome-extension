@@ -54,6 +54,7 @@ is named after the tomato-shaped kitchen timers that start ticking with a twist 
 
 
 ## Incoming features 👷
-- Notification Alerts: Receive alerts when it’s time to take a break or get back to work.
+- Pomodoro history
+- Sync with web app
 
 Get started today and see how small intervals can lead to big productivity gains!
