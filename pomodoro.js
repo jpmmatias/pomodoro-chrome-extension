@@ -1,8 +1,12 @@
-const START_FOCUS_TIME = "25:00";
+let START_FOCUS_TIME = "25:00";
 const startButton = document.getElementById("start");
 const stopButton = document.getElementById("stop");
 const resetButton = document.getElementById("reset");
 const timer = document.getElementById("timer");
+
+chrome.storage.local.get(["focusTime"], (result) => {
+  START_FOCUS_TIME = `${result.focusTime}:00` || "25:00";
+});
 
 const toggleIsRunning = (isRunning) => {
   chrome.storage.local.set({ isRunning });
