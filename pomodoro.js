@@ -1,4 +1,4 @@
-const START_FOCUS_TIME = "01:00";
+const START_FOCUS_TIME = "25:00";
 const startButton = document.getElementById("start");
 const stopButton = document.getElementById("stop");
 const resetButton = document.getElementById("reset");
